@@ -140,7 +140,7 @@ if __name__ == "__main__":
         #labels = tf.random.uniform((10, ), minval=0, maxval=2, dtype=tf.int32)
         #labels = tf.zeros((10, ), dtype=tf.int32)
         labels = tf.ones((10, ), dtype=tf.int32)
-        print(f"labels={labels}")
+        print("labels={}".format(labels))
 
         M.train()
         weights = M.trainable_weights
@@ -148,7 +148,7 @@ if __name__ == "__main__":
             logits = M([images, audios])
             loss = tl.cost.cross_entropy(logits, labels)
 
-        print(f"logits={logits}\n")
+        print("logits={}\n".format(logits))
         grad = tape.gradient(loss, weights)
         optimizer.apply_gradients(zip(grad, weights))
 
