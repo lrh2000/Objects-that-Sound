@@ -12,16 +12,16 @@ import numpy as np
 from rawdata.dataset import make_train_dataset_from_raw
 from model import get_model
 
-n_epoch = 10
+n_epoch = 20
 
 net = get_model()
-net.load_weights('weights/net_weights_e8.h5') # modify this to load trained model
+net.load_weights('weights/net_weights_e15.h5') # modify this to load trained model
 train_weights = net.trainable_weights
 optimizer = tf.optimizers.Adam(learning_rate=0.00001)
 
 train_ds = make_train_dataset_from_raw()
 
-for epoch in range(9, n_epoch):
+for epoch in range(16, n_epoch):
     start_time = time.time()
 
     train_loss, train_acc, n_iter = 0, 0, 0

@@ -18,7 +18,7 @@ The paper shows that audio and visual embeddings that enable both within-mode (e
 ![architecture](https://github.com/lrh2000/Objects-that-Sound/blob/master/img/arc.png)
 
 ## Problems encountered and solved
-- **Data preprocessing**: we originally get images from mp4 by downloading videos from youtube, choosing 10s-long fractions to use and then select images from these segments. The whole process was quite slow: it seemed that the bottleneck was data processing rather than  network training. By using 'resize' function and 'spectrogram' function, we preprocessed data into the input format of our network, so that multiprocessing became possible and training was accelerated.
+- **Data preprocessing**: we originally get images from mp4 by downloading videos from youtube, choose 10s-long fractions to use and then select images from these segments. The whole process was quite slow: we realized that the bottleneck was data processing rather than network training. However, it is possible to preprocesse data into the input format of our network and save them into hard disk beforehand. Making use of multiprocessing it was very fast and training was also greatly accelerated.
 - **Preventing shortcuts**: having been trained with one epoch, we found that the network was able to find a shortcut to exploit the not-so-randomized data to increase its correctness in training. It misused the latest data to rapidly adjust itself so as to pretend to be learned because we didn't shuffle our data in a range that was large enough. We therefore increased shuffle parameter so that data pairs would be well scattered.
 
 ## Results
